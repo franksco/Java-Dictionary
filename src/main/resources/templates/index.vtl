@@ -1,0 +1,20 @@
+<h1>Enter a Word!</h1>
+#if ($words)
+  <ul></ul>
+    #foreach ($word in $words)
+      <li>$word.getDescription()</li>
+    #end
+  </ul>
+#else
+  <p>No Words!</p>
+#end
+
+<h3>Word List!</h3>
+
+<form action='/words' method='post'>
+
+  <label for="description">Word</label>
+  <input id="description" name="description" type="text">
+
+  <button type="submit" class="btn">Add Word!</button>
+</form>
