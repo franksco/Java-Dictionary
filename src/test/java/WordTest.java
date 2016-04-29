@@ -3,6 +3,11 @@ import static org.junit.Assert.*;
 
 public class WordTest {
 
+  @After
+  public void tearDown() {
+    Word.clear();
+  }
+
   @Test
   public void Word_initializesCorrectly_true() {
     Word testWord = new Word("Pony");
@@ -34,14 +39,14 @@ public class WordTest {
   public void getId_wordsInstantiateWithAnID_1() {
     Word.clear();
     Word testWord = new Word("Pony");
-    assertEquals(Word.all().size(), 0);
+    assertEquals(1, testWord.getId());
   }
 
   @Test
   public void find_returnsWordWithSameId_secondWord() {
-    Task firstTask = new Task("Mow the lawn");
-    Task secondTask = new Task("Buy groceries");
-    assertEquals(Task.find(secondTask.getId()), secondWord);
+    Word firstWord = new Word("Pony");
+    Word secondWord = new Word("Toy");
+    assertEquals(Word.find(secondWord.getId()), secondWord);
   }
 
   @Test

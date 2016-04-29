@@ -10,19 +10,19 @@ public class Word {
   public Word(String description) {
     mDescription = description;
     instances.add(this);
-    mId = instances.size;
+    mId = instances.size();
   }
 
   public String getDescription() {
     return mDescription;
   }
 
-  public Static ArrayList<Word> all() {
+  public static ArrayList<Word> all() {
     return instances;
   }
 
   public static void clear() {
-    instances.clear;
+    instances.clear();
   }
 
   public int getId() {
@@ -30,11 +30,10 @@ public class Word {
   }
 
   public static Word find(int id) {
-  try {
-    return instances.get(id - 1);
-  } catch (IndexOutOfBoundsException exception) {
-    return null;
+    try {
+      return instances.get(id - 1);
+    } catch (IndexOutOfBoundsException exception) {
+      return null;
+    }
   }
-
-
 }

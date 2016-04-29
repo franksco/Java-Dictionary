@@ -54,4 +54,20 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Pony");
     assertThat(pageSource()).contains("Toy");
   }
+
+  @Test
+  public void taskShowPageDisplaysWord() {
+    goTo("http://localhost:4567/words/new");
+    fill("#description").with("Pony");
+    submit(".btn");
+    click("a", withText("View words"));
+    click("a", withText("Pony"));
+    assertThat(pageSource()).contains("Pony");
+  }
+
+  @Test
+  public void wordNotFoundMessageShown() {
+    goTo("http://localhost:4567/words/999");
+    assertThat(pageSource()).contains("word not found");
+  }
 }
