@@ -37,6 +37,36 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/definitions/new", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/definition-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/definitions", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("definitions", Definition.all());
+      model.put("template", "templates/definitions.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/definitions/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Definition definition = Definition.find(Integer.parseInt(request.params(":id")));
+      model.put("definition", definition);
+      model.put("template", "templates/definition.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("definitions/:id/words/new", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Definition definition = Definition.find(Integer.parseInt(request.params(":id")));
+      model.put("definition", definition);
+      model.put("template", "templates/definition-tasks-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
     post("/words", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String description = request.queryParams("description");
@@ -44,5 +74,14 @@ public class App {
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/definition", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      String name = request.queryParams("name");
+      Definition newDefinition = new Definition(name);
+      model.put("template", "templates/definition-success.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }

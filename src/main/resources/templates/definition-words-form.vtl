@@ -1,0 +1,12 @@
+<h1>Add a task to $definition.getName()</h1>
+
+<form action="/words" method="post">
+  <input id="definitionId" name="definitionId" type="hidden" value="$definition.getId()">
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input id="description" name="description" type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Add Word</button>
+</form>

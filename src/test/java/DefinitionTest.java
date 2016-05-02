@@ -52,4 +52,18 @@ public class DefinitionTest {
   public void find_returnsNullWhenNoDefinitionFound_null() {
     assertTrue(Definition.find(999) == null);
   }
+
+  @Test
+  public void getWords_initiallyReturnsEmptyList_ArrayList() {
+    Definition testDefinition = new Definition("Pony");
+    assertEquals(0, testDefinition.getWords().size());
+  }
+
+  @Test
+  public void addWord_addsWordToList_true() {
+  Definition testDefinition = new Definition("Pony");
+  Word testWord = new Word("Pony");
+  testDefinition.addWord(testWord);
+  assertTrue(testDefinition.getWords().contains(testWord));
+  }
 }

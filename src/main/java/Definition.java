@@ -4,11 +4,13 @@ public class Definition {
   private String mName;
   private static ArrayList<Definition> instances = new ArrayList<Definition>();
   private int mId;
+  private ArrayList<Word> mWords;
 
   public Definition(String name) {
     mName = name;
     instances.add(this);
     mId = instances.size();
+    mWords = new ArrayList<Word>();
   }
 
   public String getName() {
@@ -33,6 +35,14 @@ public class Definition {
     } catch (IndexOutOfBoundsException e) {
       return null;
     }
+  }
+
+  public ArrayList<Word> getWords() {
+    return mWords;
+  }
+
+  public void addWord(Word word) {
+    mWords.add(word);
   }
 
 }

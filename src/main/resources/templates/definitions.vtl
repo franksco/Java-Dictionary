@@ -1,9 +1,11 @@
 <h1>Here is your definition/s for your word</h1>
+<h1>$definition.getName()</h1>
 
 <ul>
-  #foreach ($word in $words)
-    <li><a href="/words/$word.getId()">$word.getDescription()</a></li>
+  #foreach ($definition in $definitions)
+    <li><ahref="/definitions/$definition.getId()">$definition.getName()</a></li>
   #end
 </ul>
 
+<a href="/definition/$definition.getId()/words/new">Add a new word</a>
 <a href="/words/new">Add a new definition</a>

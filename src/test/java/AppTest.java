@@ -22,6 +22,8 @@ public class AppTest extends FluentTest {
   public void rootTest() {
     goTo("http://localhost:4567/");
     assertThat(pageSource()).contains("Word List!");
+    assertThat(pageSource()).contains("View Word List");
+    assertThat(pageSource()).contains("Add a New Word");
   }
 
   @Test
@@ -56,7 +58,7 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-  public void taskShowPageDisplaysWord() {
+  public void wordShowPageDisplaysWord() {
     goTo("http://localhost:4567/words/new");
     fill("#description").with("Pony");
     submit(".btn");
@@ -70,4 +72,55 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/words/999");
     assertThat(pageSource()).contains("word not found");
   }
+
+  @Test
+  public void definitionIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    click("a", withText("Add a New definition"));
+    fill("#name").with("a small breed of horse");
+    submit(".btn");
+    assertThat(pageSource()).contains("Your definition has been saved.");
+  }
+
+  @Test
+  public void definitionIsDisplayedTest() {
+    goTo("http://localhost:4567/definitions/new");
+    fill("#name").with("A small breed of horse");
+    submit(".btn");
+    click("a", withText("View definitions"));
+    assertThat(pageSource()).contains("A small breed of horse");
+  }
+
+  @Test
+  public void definitionShowPageDisplaysName() {
+    goTo("http://localhost:4567/definitions/new");
+    fill("#name").with("A small breed of horse");
+    submit(".btn");
+    click("a", withText("View definitions"));
+    assertThat(pageSource()).contains("A small breed of horse");
+  }
+
+  @Test
+  public void definitionWordsFormIsDisplayed() {
+    goTo("http://localhost:4567/definitions/new");
+    fill("#name").with("A small breed of horse");
+    submit(".btn");
+    click("a", withText("View definitions"));
+    click("a", withText("Add a new word"));
+    assertThat(pageSource()).contains("Add a definition to Pony");
+  }
+  // @Test
+  // public void wordsIsAddedAndDisplayed() {
+  //   goTo("http://localhost:4567/definitions/new");
+  //   fill("#name").with("Banking");
+  //   submit(".btn");
+  //   click("a", withText("View definitions"));
+  //   click("a", withText("Banking"));
+  //   click("a", withText("Add a new word"));
+  //   fill("#description").with("Deposit paycheck");
+  //   submit(".btn");
+  //   click("a", withText("View definitions"));
+  //   click("a", withText("Banking"));
+  //   assertThat(pageSource()).contains("Deposit paycheck");
+  // }
 }
