@@ -1,8 +1,9 @@
-#if ($word)
-  <h1>$word.getDescription()</h1>
-#else
-  <h1> Word not found </h1>
-#end
+<h1>Here is all your words</h1>
+<ul>
+  #foreach ($word in $words)
+    <li><a href="/words/$word.getId()">$word.getDescription()</a></li>
+  #end
+</ul>
 
-<a href="/words/new">Add another word</a>
-<a href="/words">All words</a>
+<a href="/words/$word.getId()/definitions/new">Add a definition</a>
+<a href="/words/new">Add a new word</a>

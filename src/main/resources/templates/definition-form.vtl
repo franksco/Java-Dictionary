@@ -1,9 +1,8 @@
 <h1>Add a definition</h1>
 
-<p>Add a definition here:</p>
+<form action="/definition" method="post">
+  <label for="description">Definition</label>
+  <input id="description" name="description" type="text">
 
-<form action="/definitions" method="post">
-  <label for="name">Definition name</label>
-  <input id="name" name="name" type="text">
-  <button type="submit" class="btn btn-success">Add Definition</button>
+  <button type="submit" class="btn btn-default">Add a word</button>
 </form>

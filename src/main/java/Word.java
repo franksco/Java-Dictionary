@@ -5,12 +5,20 @@ public class Word {
 
   private String mDescription;
   private static ArrayList<Word> instances = new ArrayList<Word>();
+  private ArrayList<Definition> definitionList = new ArrayList<Definition>();
   private int mId;
 
   public Word(String description) {
     mDescription = description;
     instances.add(this);
     mId = instances.size();
+  }
+
+  public void addDefinition(Definition def) {
+    definitionList.add(def);
+  }
+  public ArrayList<Definition> getDefinitions(){
+    return definitionList;
   }
 
   public String getDescription() {

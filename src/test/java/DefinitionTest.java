@@ -10,41 +10,43 @@ public class DefinitionTest {
 
   @Test
   public void Definition_instantiatesCorrectly_true() {
-    Definition testDefinition = new Definition("Pony");
+    Definition testDefinition = new Definition("a small breed of horse");
     assertEquals(true, testDefinition instanceof Definition);
   }
 
   @Test
-  public void getName_DefinitionInstantiatesWithName_Pony() {
-    Definition testDefinition = new Definition("Pony");
-    assertEquals("Pony", testDefinition.getName());
+  public void getName_DefinitionInstantiatesWithName_a_small_breed_of_horse() {
+    Definition testDefinition = new Definition("a small breed of horse");
+    assertEquals("a small breed of horse", testDefinition.getDescription());
   }
 
   @Test
   public void all_returnsAllInstancesOfDefinition_true() {
-    Definition firstDefinition = new Definition("Pony");
-    Definition secondDefinition = new Definition("Toy");
+    Definition firstDefinition = new Definition("a small breed of horse");
+    Definition secondDefinition = new Definition("miniature replica of something");
     assertTrue(Definition.all().contains(firstDefinition));
     assertTrue(Definition.all().contains(secondDefinition));
   }
 
   @Test
   public void clear_emptiesAllDefinitionsFromList_0() {
-    Definition testDefinition = new Definition("Pony");
+    Definition testDefinition = new Definition("a small breed of horse");
     Definition.clear();
     assertEquals(Definition.all().size(), 0);
   }
 
   @Test
   public void getId_DefinitionsInstantiateWithAnId_1() {
-    Definition testDefinition = new Definition("Pony");
+    Definition.clear();
+
+    Definition testDefinition = new Definition("a small breed of horse");
     assertEquals(1, testDefinition.getId());
   }
 
   @Test
   public void find_returnsDefinitionWithSameId_secondDefinition() {
-    Definition firstDefinition = new Definition("Pony");
-    Definition secondDefinition = new Definition("Toy");
+    Definition firstDefinition = new Definition("a small breed of horse");
+    Definition secondDefinition = new Definition("miniature replica of something");
     assertEquals(Definition.find(secondDefinition.getId()), secondDefinition);
   }
 
@@ -55,14 +57,14 @@ public class DefinitionTest {
 
   @Test
   public void getWords_initiallyReturnsEmptyList_ArrayList() {
-    Definition testDefinition = new Definition("Pony");
+    Definition testDefinition = new Definition("a small breed of horse");
     assertEquals(0, testDefinition.getWords().size());
   }
 
   @Test
   public void addWord_addsWordToList_true() {
-  Definition testDefinition = new Definition("Pony");
   Word testWord = new Word("Pony");
+  Definition testDefinition = new Definition("a small breed of horse");
   testDefinition.addWord(testWord);
   assertTrue(testDefinition.getWords().contains(testWord));
   }

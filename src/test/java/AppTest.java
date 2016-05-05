@@ -3,6 +3,8 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 import static org.fluentlenium.core.filter.FilterConstructor.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,12 +20,17 @@ public class AppTest extends FluentTest {
   @ClassRule
   public static ServerRule server = new ServerRule();
 
+  @After
+  public void tearDown() {
+    Definition.clear();
+    Word.clear();
+  }
+
   @Test
   public void rootTest() {
     goTo("http://localhost:4567/");
-    assertThat(pageSource()).contains("Word List!");
-    assertThat(pageSource()).contains("View Word List");
-    assertThat(pageSource()).contains("Add a New Word");
+    assertThat(pageSource()).contains("View the Word List");
+    assertThat(pageSource()).contains("Add a new word");
   }
 
   @Test
@@ -68,59 +75,43 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-  public void wordNotFoundMessageShown() {
-    goTo("http://localhost:4567/words/999");
-    assertThat(pageSource()).contains("word not found");
-  }
-
-  @Test
   public void definitionIsCreatedTest() {
     goTo("http://localhost:4567/");
-    click("a", withText("Add a New definition"));
-    fill("#name").with("a small breed of horse");
+    click("a", withText("Add a new word"));
+    fill("#description").with("Pony");
     submit(".btn");
-    assertThat(pageSource()).contains("Your definition has been saved.");
+    click("a", withText("View words"));
+    click("a", withText("Pony"));
+    click("a", withText("Add a new definition"));
+    fill("#description").with("a small breed of horse");
+    submit(".btn");
+    assertThat(pageSource()).contains("Your definition has been saved");
   }
 
   @Test
   public void definitionIsDisplayedTest() {
-    goTo("http://localhost:4567/definitions/new");
-    fill("#name").with("A small breed of horse");
-    submit(".btn");
-    click("a", withText("View definitions"));
-    assertThat(pageSource()).contains("A small breed of horse");
-  }
-
-  @Test
-  public void definitionShowPageDisplaysName() {
-    goTo("http://localhost:4567/definitions/new");
-    fill("#name").with("A small breed of horse");
-    submit(".btn");
-    click("a", withText("View definitions"));
-    assertThat(pageSource()).contains("A small breed of horse");
-  }
-
-  @Test
-  public void definitionWordsFormIsDisplayed() {
-    goTo("http://localhost:4567/definitions/new");
-    fill("#name").with("A small breed of horse");
-    submit(".btn");
-    click("a", withText("View definitions"));
+    goTo("http://localhost:4567/");
     click("a", withText("Add a new word"));
-    assertThat(pageSource()).contains("Add a definition to Pony");
+    fill("#description").with("Pony");
+    submit(".btn");
+    click("a", withText("View words"));
+    click("a", withText("Pony"));
+    click("a", withText("Add a new definition"));
+    fill("#description").with("a small breed of horse");
+    submit(".btn");
+    click("a", withText("View words"));
+    click("a", withText("Pony"));
+    assertThat(pageSource()).contains("a small breed of horse");
   }
-  // @Test
-  // public void wordsIsAddedAndDisplayed() {
-  //   goTo("http://localhost:4567/definitions/new");
-  //   fill("#name").with("Banking");
-  //   submit(".btn");
-  //   click("a", withText("View definitions"));
-  //   click("a", withText("Banking"));
-  //   click("a", withText("Add a new word"));
-  //   fill("#description").with("Deposit paycheck");
-  //   submit(".btn");
-  //   click("a", withText("View definitions"));
-  //   click("a", withText("Banking"));
-  //   assertThat(pageSource()).contains("Deposit paycheck");
-  // }
+
+  @Test
+  public void wordDefinitionsFormIsDisplayed() {
+    goTo("http://localhost:4567/words/new");
+    fill("#description").with("Pony");
+    submit(".btn");
+    click("a", withText("View words"));
+    click("a", withText("Pony"));
+    click("a", withText("Add a new definition"));
+    assertThat(pageSource()).contains("Add a definition Pony");
+  }
 }

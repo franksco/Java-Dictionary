@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 
 public class Definition {
-  private String mName;
+  private String mDescription;
   private static ArrayList<Definition> instances = new ArrayList<Definition>();
   private int mId;
   private ArrayList<Word> mWords;
 
-  public Definition(String name) {
-    mName = name;
+  public Definition(String description) {
+    mDescription = description;
     instances.add(this);
     mId = instances.size();
     mWords = new ArrayList<Word>();
   }
 
-  public String getName() {
-    return mName;
+  public String getDescription() {
+    return mDescription;
   }
 
   public static ArrayList<Definition> all() {

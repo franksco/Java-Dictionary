@@ -1,31 +1,35 @@
-{Dictionary} {enter in a word and add a Definition}, {4/22/2016}
+# _{Dictionary}_
 
-By {Cory Franks}
+#### _{enter in a word and add a Definition}, {5/04/2016}_
 
-Description
+#### By _**{Cory Franks}**_
 
-{Enter in any word and add a Definition }
+## Description
 
-Setup/Installation Requirements
+_{Enter in any word and add a Definition. }_
 
--make a file clone repository 
--open terminal and type gradle run
--after running gradle open up browser of choice (tested on safari and chrome) type in localhost:4567/ enter a word/sentence and have fun
+## Setup/Installation Requirements
 
-Known Bugs
+* _make a file clone repository_
+* _open terminal and type gradle build then gradle run_
+* _after running gradle open up browser of choice (tested on safari and chrome)_
+* _type in localhost:4567/ enter a word and have fun_
 
-{You can Add a word but, you arent able to add defintions yet. }
 
-Support and contact details
+## Known Bugs
 
-{You can contact Cory Franks at franksco39@gmail.com.}
+_{No known bugs }_
 
-Technologies Used
+## Support and contact details
 
-{Java, Spark, gradle, velocity, fluentlenium, bootstrap, atom, and github .}
+_{You can contact Cory Franks at franksco39@gmail.com}_
 
-License
+## Technologies Used
 
-{This is licensed under the MIT license.}
+_{Java, Spark, gradle, velocity, fluentlenium, atom, and github}_
+
+### License
+
+*{This is licensed under the MIT license.}*
 
 Copyright (c) 2016 {Cory Franks}

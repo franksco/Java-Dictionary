@@ -1,11 +1,7 @@
-<h1>Here is your definition/s for your word</h1>
-<h1>$definition.getName()</h1>
-
+<h1> All definitions </h1>
 <ul>
   #foreach ($definition in $definitions)
-    <li><ahref="/definitions/$definition.getId()">$definition.getName()</a></li>
+    <li><a href="/definitions/$definition.getId()">$definition.getDescription()</a></li>
   #end
 </ul>
-
-<a href="/definition/$definition.getId()/words/new">Add a new word</a>
-<a href="/words/new">Add a new definition</a>
+<a href="/definition/new">Add New defintion</a>

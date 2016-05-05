@@ -37,7 +37,7 @@ public class WordTest {
 
   @Test
   public void getId_wordsInstantiateWithAnID_1() {
-    Word.clear();
+    Word.clear(); //THIS TEST WILL FAIL WITHOUT THIS LINE!
     Word testWord = new Word("Pony");
     assertEquals(1, testWord.getId());
   }
