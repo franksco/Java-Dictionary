@@ -1,12 +1,12 @@
-# _{Dictionary}_
+# Dictionary
 
-#### _{enter in a word and add a Definition}, {5/04/2016}_
+#### enter in a word and add a Definition
 
-#### By _**{Cory Franks}**_
+#### By Cory Franks on 5/04/2016
 
 ## Description
 
-_{Enter in any word and add a Definition. }_
+Enter in any word and add a Definition.
 
 ## Setup/Installation Requirements
 
@@ -18,18 +18,25 @@ _{Enter in any word and add a Definition. }_
 
 ## Known Bugs
 
-_{No known bugs }_
+None as of this time.
 
 ## Support and contact details
 
-_{You can contact Cory Franks at franksco39@gmail.com}_
+You can contact Cory Franks at franksco39@gmail.com.
 
 ## Technologies Used
 
-_{Java, Spark, gradle, velocity, fluentlenium, atom, and github}_
+* Java
+* Spark
+* Gradle 
+* Velocity 
+* Fluentlenium 
+* Bootstrap 
+* Atom
+* Github
 
-### License
+## License
 
-*{This is licensed under the MIT license.}*
+This is licensed under the MIT license.
 
-Copyright (c) 2016 {Cory Franks}
+Copyright (c) 2016 Cory Franks
